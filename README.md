@@ -2,10 +2,23 @@
 
 Modern property rental portal — tenants discover homes, owners manage listings, and administrators moderate the platform.
 
+## Repository
+
+This project is a **pnpm monorepo** on branch `main`. Secrets stay local: copy `apps/api/.env.example` → `apps/api/.env` (never commit `.env`).
+
+**Push to GitHub (after creating an empty repo named `rentora`):**
+
+```bash
+git remote add origin https://github.com/YOUR_USERNAME/rentora.git
+git push -u origin main
+```
+
+Or with GitHub CLI: `gh repo create rentora --public --source=. --remote=origin --push`
+
 ## Clone & run
 
 ```bash
-git clone <your-repo-url> rentora
+git clone https://github.com/YOUR_USERNAME/rentora.git
 cd rentora
 pnpm install
 cp apps/api/.env.example apps/api/.env
