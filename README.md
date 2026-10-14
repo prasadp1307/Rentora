@@ -2,6 +2,18 @@
 
 Modern property rental portal — tenants discover homes, owners manage listings, and administrators moderate the platform.
 
+## Screenshots
+
+| Home | Browse properties |
+|------|-------------------|
+| ![Rentora home](docs/screenshots/home.png) | ![Browse properties](docs/screenshots/browse-properties.png) |
+
+| Sign in | Sign up |
+|---------|---------|
+| ![Login](docs/screenshots/login.png) | ![Register](docs/screenshots/register.png) |
+
+![About Rentora](docs/screenshots/about.png)
+
 ## Repository
 
 This project is a **pnpm monorepo** on branch `main`. Secrets stay local: copy `apps/api/.env.example` → `apps/api/.env` (never commit `.env`).
