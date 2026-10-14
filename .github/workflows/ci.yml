@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: rentora
+          POSTGRES_PASSWORD: rentora_dev
+          POSTGRES_DB: rentora
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U rentora -d rentora"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DATABASE_URL: postgresql://rentora:rentora_dev@localhost:5432/rentora?schema=public
+      JWT_ACCESS_SECRET: ci-access-secret-minimum-32-characters-long
+      JWT_REFRESH_SECRET: ci-refresh-secret-minimum-32-characters-long
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install
+      - run: pnpm --filter @rentora/shared build
+      - run: pnpm --filter @rentora/api prisma:generate
+      - run: pnpm --filter @rentora/api exec prisma migrate deploy
+      - run: pnpm --filter @rentora/api test
+      - run: pnpm --filter @rentora/api build
+      - run: pnpm --filter @rentora/web build
