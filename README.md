@@ -4,6 +4,13 @@ Modern property rental portal — tenants discover homes, owners manage listings
 
 ## Screenshots
 
+Desktop captures (1920px) from the running Next.js app. Regenerate after UI changes:
+
+```bash
+pnpm dev:web   # in one terminal
+./scripts/capture-screenshots.sh http://localhost:3000
+```
+
 | Home | Browse properties |
 |------|-------------------|
 | ![Rentora home](docs/screenshots/home.png) | ![Browse properties](docs/screenshots/browse-properties.png) |
