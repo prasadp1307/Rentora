@@ -9,16 +9,14 @@ This project is a **pnpm monorepo** on branch `main`. Secrets stay local: copy `
 **Push to GitHub (after creating an empty repo named `rentora`):**
 
 ```bash
-git remote add origin https://github.com/YOUR_USERNAME/rentora.git
+git remote add origin https://github.com/prasadp1307/Rentora.git
 git push -u origin main
 ```
-
-Or with GitHub CLI: `gh repo create rentora --public --source=. --remote=origin --push`
 
 ## Clone & run
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/rentora.git
+git clone https://github.com/prasadp1307/Rentora.git
 cd rentora
 pnpm install
 cp apps/api/.env.example apps/api/.env
